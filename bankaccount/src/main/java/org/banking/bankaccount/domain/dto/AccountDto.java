@@ -12,7 +12,7 @@ import java.util.Set;
 @Builder
 public class AccountDto {
 
-    private String id;
+    private Long id;
 
     private BigDecimal initialCredit;
 

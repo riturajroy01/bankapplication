@@ -1,6 +1,7 @@
 package org.banking.bankaccount.domain.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,12 +12,14 @@ import java.math.BigDecimal;
 @Entity
 /*@NoArgsConstructor
 @AllArgsConstructor*/
+@Table(name = "TRANSACTION")
 public class AccountTransaction {
 
     @Id
   /*  @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")*/
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private BigDecimal amount;
@@ -30,7 +33,8 @@ public class AccountTransaction {
     @Column
     private String transactionDate;
 
-    @ManyToOne(/*fetch = FetchType.EAGER,*/ optional = false)
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "account_id", nullable = false)
     CustomerAccount account;
 
@@ -40,18 +44,18 @@ public class AccountTransaction {
         this.account = account;
     }
 
-    public AccountTransaction(String id, BigDecimal amount, String transactionDate, CustomerAccount account) {
+/*    public AccountTransaction(String id, BigDecimal amount, String transactionDate, CustomerAccount account) {
         this.id = id;
         this.amount = amount;
         this.transactionDate = transactionDate;
         this.account = account;
-    }
+    }*/
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

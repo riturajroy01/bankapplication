@@ -1,4 +1,4 @@
-package org.banking.bankaccount.domain.repository;
+package org.banking.bankaccount.repository;
 
 
 import org.banking.bankaccount.domain.entity.CustomerAccount;

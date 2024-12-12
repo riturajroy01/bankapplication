@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Builder
 public class TransactionDto {
 
-    private String id;
+    private Long id;
 
     private BigDecimal amount;
 
