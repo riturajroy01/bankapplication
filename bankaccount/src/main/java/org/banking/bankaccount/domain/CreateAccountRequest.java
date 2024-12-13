@@ -1,9 +1,5 @@
 package org.banking.bankaccount.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
@@ -28,5 +24,13 @@ public class CreateAccountRequest {
 
     public void setInitialCredit(BigDecimal initialCredit) {
         this.initialCredit = initialCredit;
+    }
+
+    @Override
+    public String toString() {
+        return "CreateAccountRequest{" +
+                "customerID='" + customerID + '\'' +
+                ", initialCredit=" + initialCredit +
+                '}';
     }
 }

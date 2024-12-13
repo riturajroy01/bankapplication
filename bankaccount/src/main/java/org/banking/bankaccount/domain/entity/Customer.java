@@ -1,20 +1,13 @@
 package org.banking.bankaccount.domain.entity;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 import java.util.Set;
 
 
 @Entity
-/*@Table(name = "customer")*/
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "CUSTOMER")

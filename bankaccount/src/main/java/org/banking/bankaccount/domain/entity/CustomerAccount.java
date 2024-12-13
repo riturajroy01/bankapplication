@@ -1,16 +1,12 @@
 package org.banking.bankaccount.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Set;
 
 @Entity
-/*@Table(name = "account")*/
 @Table(name = "ACCOUNT")
 public class CustomerAccount {
 

@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/accounts")
-public class AccountController {
+public class BankController {
 
     AccountService accountService;
 
-    public AccountController(AccountService accountService) {
+    public BankController(AccountService accountService) {
         this.accountService = accountService;
     }
 

@@ -3,15 +3,11 @@ package org.banking.bankaccount.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Data;
-
 import java.math.BigDecimal;
 
 
 
 @Entity
-/*@NoArgsConstructor
-@AllArgsConstructor*/
 @Table(name = "TRANSACTION")
 public class AccountTransaction {
 

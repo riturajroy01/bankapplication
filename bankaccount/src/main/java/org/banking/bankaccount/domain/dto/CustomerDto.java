@@ -1,13 +1,8 @@
 package org.banking.bankaccount.domain.dto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.banking.bankaccount.domain.entity.AccountTransaction;
 import org.banking.bankaccount.domain.entity.CustomerAccount;
-
-
 import java.util.Set;
 
 
@@ -22,11 +17,22 @@ public class CustomerDto {
 
     private Set<CustomerAccount> account;
 
-    public CustomerDto(Long id, String name, String surname, Set<CustomerAccount> account) {
+    private Set<AccountTransaction> transactions;
+
+    public Set<AccountTransaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(Set<AccountTransaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public CustomerDto(Long id, String name, String surname, Set<CustomerAccount> account, Set<AccountTransaction> transactions) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.account = account;
+        this.transactions = transactions;
     }
 
     public CustomerDto() {
