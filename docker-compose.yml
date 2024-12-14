@@ -1,0 +1,9 @@
+services:
+  bank-application-service:
+    container_name: bank-application-service
+    image: riturajdocker/bank-application-service:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080

@@ -21,8 +21,8 @@ import java.util.HashSet;
 @Service
 public class AccountService {
 
-    CustomerRepository customerRepository;
-    AccountRepository accountRepository;
+    private final CustomerRepository customerRepository;
+    private final AccountRepository accountRepository;
 
     public AccountService(CustomerRepository customerRepository, AccountRepository accountRepository) {
         this.customerRepository = customerRepository;
