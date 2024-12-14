@@ -1,4 +1,4 @@
-package org.banking.bankaccount.domain;
+package org.banking.bankaccount.domain.dto;
 
 
 import java.math.BigDecimal;

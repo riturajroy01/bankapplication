@@ -24,20 +24,6 @@ public class BanktransactionApplication {
         SpringApplication.run(BanktransactionApplication.class, args);
     }
 
-
-    /*@PostConstruct
-    private void initDb() {
-        String sqlStatements[] = {
-                "insert into customer(name, surname) values('Bob','Schalp')",
-                "insert into customer(name, surname) values('Jenny','Donald')"
-
-        };
-        Arrays.asList(sqlStatements).forEach(sql -> {
-            jdbcTemplate.execute(sql);
-        });
-
-    }*/
-
     @PostConstruct
     private void initDb() {
         String sqlStatements[] = {

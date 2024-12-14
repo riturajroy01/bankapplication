@@ -1,6 +1,7 @@
 package org.banking.banktransaction.controller;
 
-import org.banking.bankaccount.domain.CreateAccountRequest;
+import lombok.extern.slf4j.Slf4j;
+import org.banking.bankaccount.domain.dto.CreateAccountRequest;
 import org.banking.bankaccount.domain.dto.CustomerDto;
 import org.banking.bankaccount.service.AccountService;
 import org.banking.bankaccount.service.CustomerService;
@@ -10,23 +11,21 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
-
+@Slf4j
 @Controller
-public class BankUIController {
+public class BankTransactionController {
 
    private final CustomerService customerService;
    private final AccountService accountService;
 
-    public BankUIController(CustomerService customerService, AccountService accountService) {
+    public BankTransactionController(CustomerService customerService, AccountService accountService) {
         this.customerService = customerService;
         this.accountService = accountService;
     }
 
     @GetMapping("/customer/create-account/{customerId}")
     public String createAccountForm(Model model, @PathVariable("customerId") String customerId) {
-       // log.info("Account create request for customer:{}", customerId);
-        System.out.println("customerId"+customerId);
-
+       log.info("Account create request form for customer:{}", customerId);
         CustomerDto customerDto = customerService.getCustomerDetails(Long.parseLong(customerId));
         model.addAttribute("customer", customerDto);
         model.addAttribute("initialCredit", BigDecimal.ZERO);
@@ -35,17 +34,14 @@ public class BankUIController {
 
     @PostMapping("/customer/account/createAccount")
     public String customerAccountCreate(@ModelAttribute CreateAccountRequest createAccountRequest, Model model) {
-
-        System.out.println(createAccountRequest);
-        //model.addAttribute("account", createAccountRequest);
+        log.info("Account create request submitted for customer:{} with initial credit amount {}",
+                createAccountRequest.customerID(), createAccountRequest.initialCredit());
         accountService.createAccount(createAccountRequest);
-
         return "redirect:/customer/account/profile/"+createAccountRequest.customerID();
     }
 
     @RequestMapping(value = "/customer/account/profile/{customerId}", method = RequestMethod.GET)
     public String customerProfile(Model model, @PathVariable("customerId") String customerId) {
-        //code here , connect db and get data and send value to html like below
         CustomerDto customerDto = customerService.getCustomerDetails(Long.parseLong(customerId));
         model.addAttribute("customeraccountdetails", customerDto);
         return "customer-profile";

@@ -3,13 +3,12 @@ package org.banking.bankaccount.domain.entity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.util.Set;
 
-
+@Getter
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "CUSTOMER")
 public class Customer {
     @Id
@@ -27,35 +26,4 @@ public class Customer {
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private Set<CustomerAccount> account;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public Set<CustomerAccount> getAccount() {
-        return account;
-    }
-
-    public void setAccount(Set<CustomerAccount> account) {
-        this.account = account;
-    }
 }
