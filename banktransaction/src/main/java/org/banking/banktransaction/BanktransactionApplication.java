@@ -26,15 +26,12 @@ public class BanktransactionApplication {
 
     @PostConstruct
     private void initDb() {
-        String sqlStatements[] = {
+        String[] sqlStatements = {
                 "insert into \"customer\"(\"name\", \"surname\") values('Bob','Schalp')",
                 "insert into \"customer\"(\"name\", \"surname\") values('Robin','Hood')"
 
         };
-        Arrays.asList(sqlStatements).forEach(sql -> {
-            jdbcTemplate.execute(sql);
-        });
-
+        Arrays.asList(sqlStatements).forEach(sql -> jdbcTemplate.execute(sql));
     }
 
 }
