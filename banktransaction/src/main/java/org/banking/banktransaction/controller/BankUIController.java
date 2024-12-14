@@ -4,7 +4,6 @@ import org.banking.bankaccount.domain.CreateAccountRequest;
 import org.banking.bankaccount.domain.dto.CustomerDto;
 import org.banking.bankaccount.service.AccountService;
 import org.banking.bankaccount.service.CustomerService;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,13 +34,13 @@ public class BankUIController {
     }
 
     @PostMapping("/customer/account/createAccount")
-    public String customerAccountCreate(@ModelAttribute CreateAccountRequest createAccountRequest, Model model) throws ChangeSetPersister.NotFoundException {
+    public String customerAccountCreate(@ModelAttribute CreateAccountRequest createAccountRequest, Model model) {
 
         System.out.println(createAccountRequest);
         //model.addAttribute("account", createAccountRequest);
         accountService.createAccount(createAccountRequest);
 
-        return "redirect:/customer/account/profile/"+createAccountRequest.getCustomerID();
+        return "redirect:/customer/account/profile/"+createAccountRequest.customerID();
     }
 
     @RequestMapping(value = "/customer/account/profile/{customerId}", method = RequestMethod.GET)

@@ -19,13 +19,13 @@ public class CustomerService {
 
     public CustomerDto getCustomerDetails(Long customerId) {
 
-        CustomerDto customerDto = new CustomerDto();
         Customer customer = Optional.ofNullable(customerRepository.findCustomersById(customerId))
-                        .orElseThrow(()-> new NotFoundException("Customer not found"));
-        customerDto.setId(customer.getId());
-        customerDto.setName(customer.getName());
-        customerDto.setSurname(customer.getSurname());
-        customerDto.setAccount(customer.getAccount());
-        return customerDto;
+                .orElseThrow(() -> new NotFoundException("Customer not found"));
+        return CustomerDto.builder()
+                .id(customer.getId())
+                .name(customer.getName())
+                .surname(customer.getSurname())
+                .account(customer.getAccount())
+                .build();
     }
 }

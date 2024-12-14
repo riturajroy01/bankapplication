@@ -19,7 +19,7 @@ public class BankController {
         this.accountService = accountService;
     }
 
-    @PostMapping("/createAccount")
+    /*@PostMapping("/createAccount")
     public ResponseEntity<String> createAccount(@RequestBody CreateAccountRequest createAccountRequest) throws ChangeSetPersister.NotFoundException {
 
         return new ResponseEntity<>(accountService.createAccount(createAccountRequest), HttpStatus.CREATED);
@@ -31,6 +31,6 @@ public class BankController {
 
         return new ResponseEntity<>(accountService.getCustomerDetails(Long.parseLong(customerId)), HttpStatus.OK);
 
-    }
+    }*/
 
 }
