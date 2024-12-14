@@ -11,20 +11,15 @@ import java.util.Set;
 public class CustomerAccount {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   /* @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")*/
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_ID")
+   @SequenceGenerator(sequenceName = "ACCOUNT_ID_SEQ", initialValue = 1000000000, allocationSize = 1, name = "ACCOUNT_ID")
     private Long id;
 
     @Column(nullable = false)
     private BigDecimal initialCredit = BigDecimal.ZERO;
 
-  /*  @Column(nullable = false)
-    private LocalDateTime startDate;*/
-
-
-    @Column
-      private String startDate;
+    @Column(nullable = false)
+    private String startDate;
 
     /*@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)*/
     @JsonBackReference

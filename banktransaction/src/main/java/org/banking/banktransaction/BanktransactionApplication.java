@@ -16,18 +16,33 @@ import java.util.Arrays;
 @EntityScan("org.banking.bankaccount.*")
 @EnableJpaRepositories("org.banking.bankaccount.*")
 public class BanktransactionApplication {
+
     @Autowired
     JdbcTemplate jdbcTemplate;
+
     public static void main(String[] args) {
         SpringApplication.run(BanktransactionApplication.class, args);
     }
 
 
-    @PostConstruct
+    /*@PostConstruct
     private void initDb() {
         String sqlStatements[] = {
                 "insert into customer(name, surname) values('Bob','Schalp')",
                 "insert into customer(name, surname) values('Jenny','Donald')"
+
+        };
+        Arrays.asList(sqlStatements).forEach(sql -> {
+            jdbcTemplate.execute(sql);
+        });
+
+    }*/
+
+    @PostConstruct
+    private void initDb() {
+        String sqlStatements[] = {
+                "insert into \"customer\"(\"name\", \"surname\") values('Bob','Schalp')",
+                "insert into \"customer\"(\"name\", \"surname\") values('Robin','Hood')"
 
         };
         Arrays.asList(sqlStatements).forEach(sql -> {

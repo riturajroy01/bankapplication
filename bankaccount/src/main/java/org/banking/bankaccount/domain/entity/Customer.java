@@ -13,8 +13,6 @@ import java.util.Set;
 @Table(name = "CUSTOMER")
 public class Customer {
     @Id
-  /*  @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")*/
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

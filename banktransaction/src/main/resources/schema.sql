@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS CUSTOMER;
+/*DROP TABLE IF EXISTS CUSTOMER;
 
 
 CREATE TABLE CUSTOMER (
@@ -8,4 +8,4 @@ CREATE TABLE CUSTOMER (
 
 );
 
-insert into CUSTOMER(id, name, surname) values('Bob','Schalp');
+insert into CUSTOMER(id, name, surname) values('Bob','Schalp');*/

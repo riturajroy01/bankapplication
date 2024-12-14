@@ -17,7 +17,7 @@
 <table width="100%" border="1" th:each="account: ${customeraccountdetails.getAccount()}">
     <tr th:bgcolor="yellow">
         <td th:text="'Account Number: '+${account.id}" />
-        <td th:text="'Account Balance '+${account.initialCredit}" />
+        <td th:text="'Account Balance $'+${account.initialCredit}" />
     </tr>
     <tr th:each="transaction: ${account.getTransactions()}">
         <table>
