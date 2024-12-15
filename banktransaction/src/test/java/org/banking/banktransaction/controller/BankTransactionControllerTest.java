@@ -1,7 +1,6 @@
 package org.banking.banktransaction.controller;
 
 import org.banking.bankaccount.domain.dto.CustomerDto;
-import org.banking.bankaccount.service.AccountService;
 import org.banking.bankaccount.service.CustomerService;
 import org.banking.banktransaction.BankTransactionApplication;
 import org.junit.jupiter.api.Test;
@@ -40,8 +39,6 @@ class BankTransactionControllerTest {
     @Mock
     private CustomerService customerService;
 
-    @Mock
-    private AccountService accountService;
 
     @Test
     void createAccountFormTest() throws Exception {

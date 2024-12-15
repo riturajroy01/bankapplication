@@ -27,7 +27,7 @@ public class CustomerService {
      * Method to get customer details
      *
      * @param customerId customerId
-     * @return
+     * @return CustomerDto
      */
     @Transactional(readOnly = true, propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
     public CustomerDto getCustomerDetails(Long customerId) {
