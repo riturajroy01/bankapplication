@@ -1,5 +1,5 @@
 # Getting Started
-ad## Project Bank Application
+## Project Bank Application
 This is a demo project where following use cases are considered
 
 * The assessment consists of an API to be used for opening a new “current account” of already existing
@@ -13,10 +13,20 @@ customerID.
 Another Endpoint will output the user information showing Name, Surname, balance, and
 transactions of the accounts.
 
+## Prerequisites
+* JDK 21 and above
+* Apache Maven 3.6.3 and above
+* Lombok plugin support
+* Any browser to render HTML
 
-
-
-
+## Technology Stack
+* JDK 21
+* Spring Boot 3 and Spring Framework 6
+* H2 in-memory Database
+* Spring Web
+* Spring Data JPA
+* Junit 5
+* Spring Framework Thymeleaf - server-side Java template engine for UI templates
 
 
 
