@@ -47,8 +47,9 @@ For further reference, please consider the following sections:
 
 
 ### How to run the project
-* Install **Prerequisites** and open in a IDE and run application
-      Clone the repository into your projects directory - Clone using the web URL:
+* Install **Prerequisites** and open the repository branch in a IDE and run application.
+  * Steps:    
+    * Clone the repository into your projects directory - Clone using the web URL:
       
   ```
   git clone https://github.com/riturajroy01/bankapplication.git
