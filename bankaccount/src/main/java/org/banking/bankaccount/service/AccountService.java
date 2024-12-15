@@ -20,6 +20,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 
+/**
+ * Service class to create bank account
+ */
 @Slf4j
 @Service
 public class AccountService {
@@ -32,6 +35,12 @@ public class AccountService {
         this.accountRepository = accountRepository;
     }
 
+    /**
+     * method to create bank account
+     *
+     * @param createAccountRequest createAccountRequest
+     * @return CustomerAccountDto
+     */
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
     public CustomerAccountDto createAccount(CreateAccountRequest createAccountRequest) {
 

@@ -34,7 +34,7 @@ public class BankTransactionController {
     }
 
     @PostMapping("/customer/account/createAccount")
-    public String customerAccountCreate(@ModelAttribute CreateAccountRequest createAccountRequest, Model model) {
+    public String customerAccountCreate(@ModelAttribute CreateAccountRequest createAccountRequest) {
         log.info("Account create request submitted for customer:{} with initial credit amount {}",
                 createAccountRequest.customerID(), createAccountRequest.initialCredit());
         CustomerAccountDto customerAccountDto = accountService.createAccount(createAccountRequest);

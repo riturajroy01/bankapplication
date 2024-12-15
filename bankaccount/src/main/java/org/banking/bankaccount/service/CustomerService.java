@@ -12,6 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+/**
+ * Customer service class to get customer details with account and transactions
+ */
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
@@ -20,6 +23,12 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    /**
+     * Method to get customer details
+     *
+     * @param customerId customerId
+     * @return
+     */
     @Transactional(readOnly = true, propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
     public CustomerDto getCustomerDetails(Long customerId) {
 

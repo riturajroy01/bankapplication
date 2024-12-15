@@ -18,7 +18,7 @@ public class CustomerAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_ID")
-   @SequenceGenerator(sequenceName = "ACCOUNT_ID_SEQ", initialValue = 1000000000, allocationSize = 1, name = "ACCOUNT_ID")
+    @SequenceGenerator(sequenceName = "ACCOUNT_ID_SEQ", initialValue = 1000000000, allocationSize = 1, name = "ACCOUNT_ID")
     private Long id;
 
     @Column(nullable = false)
@@ -33,7 +33,7 @@ public class CustomerAccount {
     private Customer customer;
 
     @JsonManagedReference
-   @OneToMany(mappedBy = "account", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<AccountTransaction> transactions;
 
 }
