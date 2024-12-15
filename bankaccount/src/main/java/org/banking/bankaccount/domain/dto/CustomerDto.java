@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import org.banking.bankaccount.domain.entity.AccountTransaction;
 import org.banking.bankaccount.domain.entity.CustomerAccount;
+
+import java.util.List;
 import java.util.Set;
 
 
@@ -18,7 +20,7 @@ public class CustomerDto {
 
     private String surname;
 
-    private Set<CustomerAccount> account;
+    private List<CustomerAccount> account;
 
     private Set<AccountTransaction> transactions;
 }

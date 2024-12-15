@@ -3,6 +3,7 @@ package org.banking.bankaccount.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.banking.bankaccount.domain.dto.CreateAccountRequest;
+import org.banking.bankaccount.domain.dto.CustomerAccountDto;
 import org.banking.bankaccount.domain.entity.CustomerAccount;
 import org.banking.bankaccount.domain.entity.Customer;
 import org.banking.bankaccount.domain.entity.AccountTransaction;
@@ -10,6 +11,8 @@ import org.banking.bankaccount.exception.NotFoundException;
 import org.banking.bankaccount.repository.AccountRepository;
 import org.banking.bankaccount.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
@@ -28,15 +31,16 @@ public class AccountService {
         this.customerRepository = customerRepository;
         this.accountRepository = accountRepository;
     }
-    @Transactional
-    public void createAccount(CreateAccountRequest createAccountRequest){
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
+    public CustomerAccountDto createAccount(CreateAccountRequest createAccountRequest) {
 
         Customer customer = customerRepository.findById(createAccountRequest.customerID())
-                        .orElseThrow(()->
-                                new NotFoundException("Customer not found with id customer id "+createAccountRequest.customerID()));
+                .orElseThrow(() ->
+                        new NotFoundException("Customer not found with id customer id " + createAccountRequest.customerID()));
         CustomerAccount account = CustomerAccount.builder()
                 .initialCredit(createAccountRequest.initialCredit())
-                .startDate( getCurrentDate())
+                .startDate(getCurrentDate())
                 .customer(customer)
                 .transactions(new HashSet<>())
                 .build();
@@ -52,11 +56,17 @@ public class AccountService {
             account.getTransactions().add(transaction);
         }
         CustomerAccount customerAccount = accountRepository.save(account);
-        log.info("Customer account created with account number: {} ",customerAccount.getId());
+        log.info("Customer account created with account number: {} ", customerAccount.getId());
+        return CustomerAccountDto.builder()
+                .id(customerAccount.getId())
+                .initialCredit(customerAccount.getInitialCredit())
+                .transactions(customerAccount.getTransactions())
+                .customer(customerAccount.getCustomer())
+                .startDate(customerAccount.getStartDate())
+                .build();
     }
 
     private String getCurrentDate() {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
-
 }

@@ -2,6 +2,7 @@ package org.banking.banktransaction.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.banking.bankaccount.domain.dto.CreateAccountRequest;
+import org.banking.bankaccount.domain.dto.CustomerAccountDto;
 import org.banking.bankaccount.domain.dto.CustomerDto;
 import org.banking.bankaccount.service.AccountService;
 import org.banking.bankaccount.service.CustomerService;
@@ -36,11 +37,11 @@ public class BankTransactionController {
     public String customerAccountCreate(@ModelAttribute CreateAccountRequest createAccountRequest, Model model) {
         log.info("Account create request submitted for customer:{} with initial credit amount {}",
                 createAccountRequest.customerID(), createAccountRequest.initialCredit());
-        accountService.createAccount(createAccountRequest);
-        return "redirect:/customer/account/profile/"+createAccountRequest.customerID();
+        CustomerAccountDto customerAccountDto = accountService.createAccount(createAccountRequest);
+        return "redirect:/customer/account/profile/"+customerAccountDto.customer().getId();
     }
 
-    @RequestMapping(value = "/customer/account/profile/{customerId}", method = RequestMethod.GET)
+    @GetMapping(value = "/customer/account/profile/{customerId}")
     public String customerProfile(Model model, @PathVariable("customerId") String customerId) {
         CustomerDto customerDto = customerService.getCustomerDetails(Long.parseLong(customerId));
         model.addAttribute("customeraccountdetails", customerDto);

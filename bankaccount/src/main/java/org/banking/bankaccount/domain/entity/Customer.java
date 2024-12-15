@@ -2,11 +2,15 @@ package org.banking.bankaccount.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import java.util.Set;
+import lombok.*;
+import java.util.List;
 
-@Getter
+
+@Data
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "CUSTOMER")
 public class Customer {
     @Id
@@ -19,9 +23,8 @@ public class Customer {
     @Column(nullable = false)
     private String surname;
 
-    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonManagedReference
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
-    private Set<CustomerAccount> account;
+    private List<CustomerAccount> account;
 
 }

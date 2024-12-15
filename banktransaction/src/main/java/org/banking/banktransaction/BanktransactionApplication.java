@@ -1,7 +1,6 @@
 package org.banking.banktransaction;
 
 import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -17,8 +16,11 @@ import java.util.Arrays;
 @EnableJpaRepositories("org.banking.bankaccount.*")
 public class BanktransactionApplication {
 
-    @Autowired
-    JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
+
+    public BanktransactionApplication(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(BanktransactionApplication.class, args);
@@ -31,7 +33,7 @@ public class BanktransactionApplication {
                 "insert into \"customer\"(\"name\", \"surname\") values('Robin','Hood')"
 
         };
-        Arrays.asList(sqlStatements).forEach(sql -> jdbcTemplate.execute(sql));
+        Arrays.asList(sqlStatements).forEach(jdbcTemplate::execute);
     }
 
 }
