@@ -48,6 +48,22 @@ For further reference, please consider the following sections:
 
 ### How to run the project
 * Install **Prerequisites** and open in a IDE and run application
+      Clone the repository into your projects directory - Clone using the web URL:
+      
+  ```
+  git clone https://github.com/riturajroy01/bankapplication.git
+  ```
+   ```
+  git remote add origin https://github.com/riturajroy01/bankapplication.git
+  ```
+    ```
+  git checkout -b master
+  ```
+     ```
+  git branch --show-current
+  ```
+
+
 * Install Docker Desktop and pull the image from docker hub
     * Go to project root directory and run following command
 
