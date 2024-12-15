@@ -46,8 +46,8 @@ For further reference, please consider the following sections:
 * [Spring Data JPA](https://docs.spring.io/spring-boot/3.4.0/reference/data/sql.html#data.sql.jpa-and-spring-data)
 
 
-### How to run the project
-* Install **Prerequisites** and open the repository branch in a IDE and run application.
+### How to run the project : Use one of the options mentioned below
+* Option 1: Install **Prerequisites** and open the repository branch in a IDE and run application.
   * Steps:    
     * Clone the repository into your projects directory - Clone using the web URL:
       
@@ -65,11 +65,31 @@ For further reference, please consider the following sections:
   ```
 
 
-* Install Docker Desktop and pull the image from docker hub
+* Option 2: Install Docker Desktop and pull the image from docker hub
     * Go to project root directory and run following command
 
     ```
     docker compose up -d
     ```
 
+### End points to Test
+* Account will be created with Customer Id as path variable
+* Application start up creating two default customers with Customer Id 1 and 2
 
+Create Account with Customer ID 1
+```
+    http://localhost:8080/customer/create-account/1
+    ```
+ ```
+Create Account with Customer ID 2
+```
+    http://localhost:8080/customer/create-account/2
+    ```
+ ```
+Display customer profile with Account number and Transactions
+   ```
+    http://localhost:8080/customer/account/profile/1
+    ```
+ ```
+    http://localhost:8080/customer/account/profile/2
+    ```
