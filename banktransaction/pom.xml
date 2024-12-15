@@ -15,13 +15,17 @@
 
     <properties>
         <java.version>21</java.version>
-        <spring.boot.mainClass>org.banking.banktransaction.BanktransactionApplication</spring.boot.mainClass>
+        <spring.boot.mainClass>org.banking.banktransaction.BankTransactionApplication</spring.boot.mainClass>
     </properties>
     <dependencies>
         <dependency>
             <groupId>com.rest.service</groupId>
             <artifactId>bankaccount</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
     </dependencies>
 
@@ -37,6 +41,14 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>

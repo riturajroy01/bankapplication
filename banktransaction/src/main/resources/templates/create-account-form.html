@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<table>
+   <!-- <tr>
+        <td th:object="${customerId}"></td>
+        <td th:text="${#strings.toUpperCase(customer.surname)}"></td>
+    </tr>-->
+    <tr>
+        <td>Hello,
+            <p th:text="${#strings.toUpperCase(customer.name)} +' '+ ${#strings.toUpperCase(customer.surname)}" />
+        </td>
+
+    </tr>
+    <tr>
+        <td>Create Account</td>
+    </tr>
+</table>
+<form action="#" th:action="@{/customer/account/createAccount}" th:object="${customer}" method="post" >
+    <p><input type="hidden" th:name="customerID" th:value="${#strings.toUpperCase(customer.id)}" /></p>
+    <p>Initial credit: $ <input type="text" th:name="initialCredit" th:value="${initialCredit}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>
