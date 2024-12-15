@@ -50,9 +50,9 @@ For further reference, please consider the following sections:
 * Install **Prerequisites** and open in a IDE and run application
 * Install Docker Desktop and pull the image from docker hub
     * Go to project root directory and run following command
-    ##
-    <tab><tab>docker compose up -d
 
-
+    ```
+    docker compose up -d
+    ```
 
 
