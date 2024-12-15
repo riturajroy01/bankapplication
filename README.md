@@ -79,17 +79,18 @@ For further reference, please consider the following sections:
 Create Account with Customer ID 1
 ```
     http://localhost:8080/customer/create-account/1
-    ```
- ```
+   
+```
 Create Account with Customer ID 2
 ```
     http://localhost:8080/customer/create-account/2
-    ```
- ```
+    
+```
 Display customer profile with Account number and Transactions
-   ```
+```
     http://localhost:8080/customer/account/profile/1
-    ```
+```    
+    
  ```
     http://localhost:8080/customer/account/profile/2
-    ```
+ ```

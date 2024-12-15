@@ -14,16 +14,16 @@ import java.util.Arrays;
 @ComponentScan(basePackages = {"org.banking.bankaccount.*","org.banking.banktransaction.*"})
 @EntityScan("org.banking.bankaccount.*")
 @EnableJpaRepositories("org.banking.bankaccount.*")
-public class BanktransactionApplication {
+public class BankTransactionApplication {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public BanktransactionApplication(JdbcTemplate jdbcTemplate) {
+    public BankTransactionApplication(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(BanktransactionApplication.class, args);
+        SpringApplication.run(BankTransactionApplication.class, args);
     }
 
     @PostConstruct
