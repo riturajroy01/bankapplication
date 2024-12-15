@@ -18,17 +18,17 @@ transactions of the accounts.
 * Apache Maven 3.6.3 and above
 * Lombok plugin support
 * Any browser to render HTML
+* Any IDE like IntelliJ IDEA
+* Docker Desktop to run/pull docker image (Optional)
 
 ## Technology Stack
 * JDK 21
 * Spring Boot 3 and Spring Framework 6
-* H2 in-memory Database
+* H2 in-memory Database integrated
 * Spring Web
 * Spring Data JPA
 * Junit 5
 * Spring Framework Thymeleaf - server-side Java template engine for UI templates
-
-
 
 ### Maven Parent overrides
 
@@ -44,4 +44,15 @@ For further reference, please consider the following sections:
 * [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.4.0/maven-plugin)
 * [Spring Web](https://docs.spring.io/spring-boot/3.4.0/reference/web/servlet.html)
 * [Spring Data JPA](https://docs.spring.io/spring-boot/3.4.0/reference/data/sql.html#data.sql.jpa-and-spring-data)
+
+
+### How to run the project
+* Install **Prerequisites** and open in a IDE and run application
+* Install Docker Desktop and pull the image from docker hub
+    * Go to project root directory and run following command
+    ##
+    <tab><tab>docker compose up -d
+
+
+
 
