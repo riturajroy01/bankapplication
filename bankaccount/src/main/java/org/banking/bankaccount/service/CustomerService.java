@@ -29,7 +29,7 @@ public class CustomerService {
      * @param customerId customerId
      * @return CustomerDto
      */
-    @Transactional(readOnly = true, propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
+    @Transactional(readOnly = true, propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
     public CustomerDto getCustomerDetails(Long customerId) {
 
         Customer customer = Optional.ofNullable(customerRepository.findCustomersById(customerId))
