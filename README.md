@@ -72,8 +72,19 @@ For further reference, please consider the following sections:
     docker compose up -d
     ```
 
+* Option 3: Install Docker Desktop, pull and run the image from docker hub
+     * Step 1
+    
+    ```
+    docker pull riturajdocker/bank-application-service
+    ```
+   * Step 2
+  ```
+    docker run -p 8080:8080 riturajdocker/bank-application-service
+    ```
+
 ### End points to Test
-* Account will be created with Customer Id as path variable
+* Account will be created with Customer ID as path variable
 * Application start up creating two default customers with Customer Id 1 and 2
 
 Create Account with Customer ID 1
@@ -94,3 +105,11 @@ Display customer profile with Account number and Transactions
  ```
     http://localhost:8080/customer/account/profile/2
  ```
+
+### GitHub Action - Build Test and Push to DockerHub
+* https://github.com/riturajroy01/bankapplication/actions
+* https://github.com/riturajroy01/bankapplication/blob/master/.github/workflows/main.yml
+
+### GitHub Action - Sonar Cloud
+* https://github.com/riturajroy01/bankapplication/actions
+* https://github.com/riturajroy01/bankapplication/blob/master/.github/workflows/sonar-check.yml
