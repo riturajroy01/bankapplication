@@ -1,32 +1,68 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Handling Form Submission</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        h2 {
+            font-family: sans-serif;
+            font-size: 1.1em;
+            text-transform: uppercase;
+        }
+
+        strong {
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        p {
+            font-family: sans-serif;
+            font-size: 1.0em;
+        }
+
+        table {
+            font-family: sans-serif;
+            font-size: 1.0em;
+        }
+
+        tr:nth-child(even) {
+            background-color: #D6EEEE;
+        }
+    </style>
+
+    <title>Customer Profile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 
 <table>
     <tr>
-        <td>Hello,
-            <p th:text="${#strings.toUpperCase(customeraccountdetails.name)} +' '+ ${#strings.toUpperCase(customeraccountdetails.surname)}" />
+        <td><h2>Hello,</h2>
+            <strong><p
+                    th:text="${#strings.toUpperCase(customeraccountdetails.name)} +' '+ ${#strings.toUpperCase(customeraccountdetails.surname)}"/>
+            </strong>
         </td>
 
     </tr>
 </table>
-<table width="100%" border="1" th:each="account: ${customeraccountdetails.getAccount()}">
-    <tr th:bgcolor="yellow">
-        <td th:text="'Account Number: '+${account.id}" />
-        <td th:text="'Account Balance $'+${account.initialCredit}" />
+<table th:each="account: ${customeraccountdetails.getAccount()}">
+    <tr>
+        <td th:text="'Account Number: '+${account.id}"/>
+        <td th:text="'Account Balance $'+${account.initialCredit}"/>
+    </tr>
+    <tr th:if="${account.getTransactions().size() == 0}">
+        <td th:colspan="2">No Transactions</td>
     </tr>
     <tr th:each="transaction: ${account.getTransactions()}">
-        <table>
-            <tr>
-                <td th:text="'Transaction amount: $'+${transaction.amount}" />
-            </tr>
-        </table>
+        <td th:colspan="2" style="background-color: #D6EEEE">
+            <table>
+                <tr>
+                    <td th:text="'Transaction amount: $'+${transaction.amount}"/>
+                </tr>
+            </table>
+        </td>
     </tr>
-    <tr th:border="1"><td><br/></td></tr>
+    <tr th:border="1">
+        <td><br/></td>
+    </tr>
 </table>
 
 </body>
