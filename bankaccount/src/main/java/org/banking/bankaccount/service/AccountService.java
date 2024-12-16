@@ -41,7 +41,7 @@ public class AccountService {
      * @param createAccountRequest createAccountRequest
      * @return CustomerAccountDto
      */
-    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
     public CustomerAccountDto createAccount(CreateAccountRequest createAccountRequest) {
 
         Customer customer = customerRepository.findById(createAccountRequest.customerID())
